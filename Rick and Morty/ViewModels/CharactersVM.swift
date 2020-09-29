@@ -29,7 +29,9 @@ class CharactersVM: ObservableObject {
             if currentPage < 1 { currentPage = 1 }
         case .next:
             currentPage += 10
-            if currentPage > 50 { currentPage = 50 }
+            //NOTE: This is the last page currently
+            //TODO: Replace with better URL from docs
+            if currentPage > 680 { currentPage = 50 }
         case .load:
             break
         }
