@@ -20,6 +20,13 @@ struct ContentView: View {
             List {
                 ForEach(charactersVM.characters) { character in
                     HStack {
+                        
+                        RemoteImage(url: character.image)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 25)
+                            .clipShape(Circle())
+                            .shadow(radius: 3)
+                        
                         Button(action: {
                             self.selectedCharacter = character
                             self.showingAlert = true
@@ -37,8 +44,7 @@ struct ContentView: View {
                 }
                 
             }
-            .cornerRadius(10.0)
-            .navigationBarTitle("Rick & Morty")
+            .navigationBarTitle("Rick & Morty\n")
             .navigationBarItems(
                 leading:
                     Button(action: {
