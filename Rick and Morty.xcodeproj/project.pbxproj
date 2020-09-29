@@ -17,6 +17,7 @@
 		BB1A371E2523D2BF00E8D69C /* Rick_and_MortyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A371D2523D2BF00E8D69C /* Rick_and_MortyUITests.swift */; };
 		BB1A37312523DD5500E8D69C /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A37302523DD5500E8D69C /* Character.swift */; };
 		BB1A37392523DD7D00E8D69C /* CharactersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A37382523DD7D00E8D69C /* CharactersVM.swift */; };
+		BB1A37682523F72600E8D69C /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A37672523F72600E8D69C /* RemoteImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		BB1A371F2523D2BF00E8D69C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB1A37302523DD5500E8D69C /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		BB1A37382523DD7D00E8D69C /* CharactersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersVM.swift; sourceTree = "<group>"; };
+		BB1A37672523F72600E8D69C /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				BB1A37302523DD5500E8D69C /* Character.swift */,
+				BB1A37672523F72600E8D69C /* RemoteImage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			files = (
 				BB1A37082523D2BF00E8D69C /* Rick_and_Morty.xcdatamodeld in Sources */,
 				BB1A37052523D2BF00E8D69C /* Persistence.swift in Sources */,
+				BB1A37682523F72600E8D69C /* RemoteImage.swift in Sources */,
 				BB1A37312523DD5500E8D69C /* Character.swift in Sources */,
 				BB1A36FE2523D2BB00E8D69C /* ContentView.swift in Sources */,
 				BB1A37392523DD7D00E8D69C /* CharactersVM.swift in Sources */,
