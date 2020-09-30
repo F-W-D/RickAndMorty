@@ -13,64 +13,65 @@ enum CharactersPageAction {
 
 class CharactersVM: ObservableObject {
     
+    private let urlString = "https://rickandmortyapi.com/api/character/"
+    
     @Published var currentPage = 1
-    @Published var characters: [Character] = []
+    @Published var curentCharacters: [Character] = []
     
     init() {
         self.getCharacters(action: .load)
     }
     
-    func getCharacters(action: CharactersPageAction) {
-        
-        //Adjust current page
+    private func createParamsSting(action: CharactersPageAction) -> String {
+
         switch action {
         case .previous:
-            currentPage -= 10
+            currentPage -= 1
             if currentPage < 1 { currentPage = 1 }
         case .next:
-            currentPage += 10
-            //NOTE: This is the last page currently
+            currentPage += 1
+            //NOTE: This is the last page *hardcoded*
             //TODO: Replace with better URL from docs
-            if currentPage > 680 { currentPage = 50 }
+            if currentPage > 34 { currentPage = 34 }
         case .load:
             break
         }
         
-        //Create Params (10 items per page)
+        //Create Params String (load next 20 characters)
         var params = ""
-        for i in currentPage..<(currentPage+10) {
+        let currentCharacterNumber = (currentPage * 10) - 10
+        for i in (currentCharacterNumber)..<(currentCharacterNumber+20) {
             params += "\(i),"
         }
+        return params
+    }
     
-        guard let apiURL = URL(string: "https://rickandmortyapi.com/api/character/\(params)") else {
+    func getCharacters(action: CharactersPageAction) {
+    
+        let params = createParamsSting(action: action)
+        guard let apiURL = URL(string: "\(urlString)\(params)") else {
              return
         }
-        
-        print("Making request to: \(apiURL)")
-        
-        //Begin Networking
+                
         let request = URLRequest(url: apiURL)
         URLSession.shared.dataTask(with: request) {
             data, response, error in
             
-            //NOTE: Go to Main Thread
-            //JSONDECODER
             guard let data = data else {
                 print("Data is nil")
                 return
             }
             
             do {
-                let decoder = JSONDecoder()
-                let results = try decoder.decode([Character].self, from: data)
-                
+                let results = try JSONDecoder().decode([Character].self, from: data)
                 DispatchQueue.main.async {
-                    self.characters = results
+                    //NOTE: Must be updated on Main Queue
+                    self.curentCharacters = results
                 }
-                
             } catch let error {
                 print("We have an error: \(error)")
             }
+            
         }.resume()
     }
 }
