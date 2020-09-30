@@ -17,7 +17,8 @@
 		BB1A371E2523D2BF00E8D69C /* Rick_and_MortyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A371D2523D2BF00E8D69C /* Rick_and_MortyUITests.swift */; };
 		BB1A37312523DD5500E8D69C /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A37302523DD5500E8D69C /* Character.swift */; };
 		BB1A37392523DD7D00E8D69C /* CharactersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A37382523DD7D00E8D69C /* CharactersVM.swift */; };
-		BB1A37682523F72600E8D69C /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A37672523F72600E8D69C /* RemoteImage.swift */; };
+		BB1A3780252424AB00E8D69C /* UrlImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A377F252424AB00E8D69C /* UrlImageModel.swift */; };
+		BB1A37862524250C00E8D69C /* UrlImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1A37852524250C00E8D69C /* UrlImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +55,8 @@
 		BB1A371F2523D2BF00E8D69C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB1A37302523DD5500E8D69C /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		BB1A37382523DD7D00E8D69C /* CharactersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersVM.swift; sourceTree = "<group>"; };
-		BB1A37672523F72600E8D69C /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
+		BB1A377F252424AB00E8D69C /* UrlImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImageModel.swift; sourceTree = "<group>"; };
+		BB1A37852524250C00E8D69C /* UrlImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		BB1A36FA2523D2BB00E8D69C /* Rick and Morty */ = {
 			isa = PBXGroup;
 			children = (
+				BB1A3784252424F900E8D69C /* Views */,
 				BB1A372F2523DD4500E8D69C /* Models */,
 				BB1A372E2523DD2C00E8D69C /* ViewModels */,
 				BB1A36FB2523D2BB00E8D69C /* Rick_and_MortyApp.swift */,
@@ -156,9 +159,17 @@
 			isa = PBXGroup;
 			children = (
 				BB1A37302523DD5500E8D69C /* Character.swift */,
-				BB1A37672523F72600E8D69C /* RemoteImage.swift */,
+				BB1A377F252424AB00E8D69C /* UrlImageModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		BB1A3784252424F900E8D69C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB1A37852524250C00E8D69C /* UrlImageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,9 +303,10 @@
 			files = (
 				BB1A37082523D2BF00E8D69C /* Rick_and_Morty.xcdatamodeld in Sources */,
 				BB1A37052523D2BF00E8D69C /* Persistence.swift in Sources */,
-				BB1A37682523F72600E8D69C /* RemoteImage.swift in Sources */,
+				BB1A37862524250C00E8D69C /* UrlImageView.swift in Sources */,
 				BB1A37312523DD5500E8D69C /* Character.swift in Sources */,
 				BB1A36FE2523D2BB00E8D69C /* ContentView.swift in Sources */,
+				BB1A3780252424AB00E8D69C /* UrlImageModel.swift in Sources */,
 				BB1A37392523DD7D00E8D69C /* CharactersVM.swift in Sources */,
 				BB1A36FC2523D2BB00E8D69C /* Rick_and_MortyApp.swift in Sources */,
 			);

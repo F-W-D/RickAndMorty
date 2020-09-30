@@ -20,8 +20,7 @@ struct ContentView: View {
                 ForEach(charactersVM.curentCharacters) { character in
                     HStack {
                         
-                        RemoteImage(url: character.image)
-                            .aspectRatio(contentMode: .fit)
+                        UrlImageView(urlString: character.image)
                             .frame(width: 40)
                             .clipShape(Circle())
                             .shadow(radius: 3)
