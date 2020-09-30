@@ -42,30 +42,34 @@ struct ContentView: View {
                     }
                     .padding(10.0)
                 }
-            }
+            }//List
             .toolbar {
+            
                 ToolbarItem(placement: .status) {
-                    Text("\(charactersVM.currentPage)")
+                    
+                    HStack {
+                        Button(action: {
+                            loadPage(action: .previous)
+                            }, label: {
+                                Label("", systemImage: "chevron.left.circle").font(.title)
+                        })
+                        
+                        Spacer(minLength: 100)
+                        Text("\(charactersVM.currentPage)").font(.headline)
+                        Spacer(minLength: 100)
+                        
+                        Button(action: {
+                            loadPage(action: .next)
+                            }, label: {
+                                Label("", systemImage: "chevron.right.circle").font(.title)
+                        })
+                    }
                 }
-            }
+            }//Toolbar
             .environment(\.defaultMinListRowHeight, 50)
-            .navigationBarTitle("Rick & Morty\n")
-            .navigationBarItems(
-                leading:
-                    Button(action: {
-                        loadPage(action: .previous)
-                    }, label: {
-                        Label("", systemImage: "chevron.left.circle")
-                    })
-                ,
-                trailing:
-                    Button(action: {
-                        loadPage(action: .next)
-                    }, label: {
-                        Label("", systemImage: "chevron.right.circle")
-                    })
-            )
-        }.alert(isPresented: $showingAlert) {
+            .navigationBarTitle("Rick & Morty Characters\n")
+        }//Nav
+        .alert(isPresented: $showingAlert) {
             
             let name = selectedCharacter?.name ?? ""
             let locationName = selectedCharacter?.getLocationName() ?? ""
