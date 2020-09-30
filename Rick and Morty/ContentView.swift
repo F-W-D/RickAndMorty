@@ -41,30 +41,12 @@ struct ContentView: View {
                     }
                     .padding(10.0)
                 }
-            }//List
-            .toolbar {
-            
-                ToolbarItem(placement: .status) {
-                    
-                    HStack {
-                        Button(action: {
-                            loadPage(action: .previous)
-                            }, label: {
-                                Label("", systemImage: "chevron.left.circle").font(.title)
-                        })
-                        
-                        Spacer(minLength: 100)
-                        Text("\(charactersVM.currentPage)").font(.headline)
-                        Spacer(minLength: 100)
-                        
-                        Button(action: {
-                            loadPage(action: .next)
-                            }, label: {
-                                Label("", systemImage: "chevron.right.circle").font(.title)
-                        })
+                Rectangle()
+                    .foregroundColor(Color.white)
+                    .onAppear {
+                        getMoreCharacters()
                     }
-                }
-            }//Toolbar
+            }//List
             .environment(\.defaultMinListRowHeight, 50)
             .navigationBarTitle("Rick & Morty Characters\n")
         }//Nav
@@ -78,11 +60,10 @@ struct ContentView: View {
                   dismissButton: .default(Text("Got it!")))
         }
     }
-    
 
-    private func loadPage(action: CharactersPageAction) {
+    private func getMoreCharacters() {
         withAnimation {
-            charactersVM.getCharacters(action: action)
+            charactersVM.getMoreCharacters()
         }
     }
 }

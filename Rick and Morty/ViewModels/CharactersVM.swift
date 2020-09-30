@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-enum CharactersPageAction {
-    case previous, next, load
-}
-
 class CharactersVM: ObservableObject {
     
     private let urlString = "https://rickandmortyapi.com/api/character/"
@@ -19,24 +15,19 @@ class CharactersVM: ObservableObject {
     @Published var curentCharacters: [Character] = []
     
     init() {
-        self.getCharacters(action: .load)
+        self.getMoreCharacters()
     }
     
-    private func createParamsSting(action: CharactersPageAction) -> String {
-
-        switch action {
-        case .previous:
-            currentPage -= 1
-            if currentPage < 1 { currentPage = 1 }
-        case .next:
-            currentPage += 1
-            //NOTE: This is the last page *hardcoded*
-            //TODO: Replace with better URL from docs
-            if currentPage > 34 { currentPage = 34 }
-        case .load:
-            break
-        }
+    private func createParamsSting() -> String {
         
+        //NOTE: This is the last page *hardcoded*
+        //TODO: Replace with better URL from docs
+        currentPage += 1
+        if currentPage > 34 {
+            currentPage = 34
+            return ""
+        }
+    
         //Create Params String (load next 20 characters)
         var params = ""
         let currentCharacterNumber = (currentPage * 10) - 10
@@ -46,9 +37,9 @@ class CharactersVM: ObservableObject {
         return params
     }
     
-    func getCharacters(action: CharactersPageAction) {
+    func getMoreCharacters() {
     
-        let params = createParamsSting(action: action)
+        let params = createParamsSting()
         guard let apiURL = URL(string: "\(urlString)\(params)") else {
              return
         }
@@ -66,7 +57,7 @@ class CharactersVM: ObservableObject {
                 let results = try JSONDecoder().decode([Character].self, from: data)
                 DispatchQueue.main.async {
                     //NOTE: Must be updated on Main Queue
-                    self.curentCharacters = results
+                    self.curentCharacters.append(contentsOf: results)
                 }
             } catch let error {
                 print("We have an error: \(error)")
