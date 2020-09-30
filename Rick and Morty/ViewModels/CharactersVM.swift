@@ -19,13 +19,6 @@ class CharactersVM: ObservableObject {
     }
     
     private func createParamsSting() -> String {
-        
-        //NOTE: This is the last page *hardcoded*
-        //TODO: Replace with better URL from docs
-//        if currentPage > 34 {
-//            currentPage = 34
-//            return ""
-//        }
     
         //Create Params String (load next 20 characters)
         var params = ""
