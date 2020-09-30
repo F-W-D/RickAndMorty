@@ -22,11 +22,10 @@ class CharactersVM: ObservableObject {
         
         //NOTE: This is the last page *hardcoded*
         //TODO: Replace with better URL from docs
-        currentPage += 1
-        if currentPage > 34 {
-            currentPage = 34
-            return ""
-        }
+//        if currentPage > 34 {
+//            currentPage = 34
+//            return ""
+//        }
     
         //Create Params String (load next 20 characters)
         var params = ""
@@ -34,6 +33,7 @@ class CharactersVM: ObservableObject {
         for i in (currentCharacterNumber)..<(currentCharacterNumber+20) {
             params += "\(i),"
         }
+        currentPage += 1
         return params
     }
     
