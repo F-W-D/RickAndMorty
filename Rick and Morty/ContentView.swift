@@ -12,18 +12,17 @@ struct ContentView: View {
     
     @State private var selectedCharacter: Character?
     @State private var showingAlert = false
-    
     @ObservedObject var charactersVM = CharactersVM()
 
     var body: some View {
         NavigationView {
             List {
-                ForEach(charactersVM.characters) { character in
+                ForEach(charactersVM.curentCharacters) { character in
                     HStack {
                         
                         RemoteImage(url: character.image)
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 25)
+                            .frame(width: 40)
                             .clipShape(Circle())
                             .shadow(radius: 3)
                         
@@ -31,7 +30,7 @@ struct ContentView: View {
                             self.selectedCharacter = character
                             self.showingAlert = true
                         }) {
-                            Text(character.name)
+                            Text(character.name).fontWeight(.bold)
                         }
                         
                         Spacer()
@@ -41,9 +40,15 @@ struct ContentView: View {
                             Text("Species: " + character.species).fontWeight(.light).font(.system(size: 12))
                         }
                     }
+                    .padding(10.0)
                 }
-                
             }
+            .toolbar {
+                ToolbarItem(placement: .status) {
+                    Text("\(charactersVM.currentPage)")
+                }
+            }
+            .environment(\.defaultMinListRowHeight, 50)
             .navigationBarTitle("Rick & Morty\n")
             .navigationBarItems(
                 leading:
@@ -51,7 +56,8 @@ struct ContentView: View {
                         loadPage(action: .previous)
                     }, label: {
                         Label("", systemImage: "chevron.left.circle")
-                    }),
+                    })
+                ,
                 trailing:
                     Button(action: {
                         loadPage(action: .next)
